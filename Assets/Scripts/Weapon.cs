@@ -6,12 +6,29 @@ public class Weapon : MonoBehaviour {
 
 
 
-public Transform firePoint;
-public GameObject bullet;
+	public Transform firePoint;
+	public GameObject bullet;
+	public float offset;
+	public float startShotTime;
+	private float timeShot=0;
+	//public Transform Player;
 
 	void Update () {
-		if(Input.GetButtonDown("Fire1")){
-			Shoot();
+		Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+		float rotateZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.Euler(0f,0f,rotateZ+offset);
+
+		if (timeShot <= 0)
+		{
+			if (Input.GetMouseButtonDown(0))
+			{
+				Shoot();
+				timeShot = startShotTime;
+			}
+		}
+		else
+		{
+			timeShot -= Time.deltaTime; 
 		}
 	}
 
