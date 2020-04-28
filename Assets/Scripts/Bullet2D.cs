@@ -32,12 +32,14 @@ public class Bullet2D : MonoBehaviour {
 		// Debug.Log(mouse.x-firePoint.position.x-Player.position.x);
 		// Debug.Log(mouse.y-firePoint.position.y-Player.position.y);
 		// уничтожить объект по истечению указанного времени (секунд), если пуля никуда не попала
+		transform.Translate(Vector3.back);
+		transform.Rotate(0,0,90);
 		Destroy(gameObject, 5);
 	}
 
 	void Update()
 	{
-		transform.Translate(Vector2.right * speed * Time.deltaTime);
+		transform.Translate(Vector2.down * speed * Time.deltaTime);
 		
 
 	}

@@ -44,22 +44,24 @@ public class EnemyBrain1 : MonoBehaviour
 			{
 
 				transform.Translate(vectMove * speed * Time.deltaTime);
-			}
-
-		}
-	}
-
-	private void OnTriggerEnter2D(Collider2D coll)
-	{
-		if (coll.isTrigger) // чтобы пуля реагировала на триггер
-		{
-			if (coll.tag == "bullet")
-			{
 				vectMove.x = Random.Range(-1f, 1f);
 				vectMove.y = Random.Range(-1f, 1f);
-
 			}
 
 		}
 	}
+
+	//private void OnTriggerEnter2D(Collider2D coll)
+	//{
+	//	if (coll.isTrigger) // чтобы пуля реагировала на триггер
+	//	{
+	//		if (coll.tag == "bullet")
+	//		{
+	//			vectMove.x = Random.Range(-1f, 1f);
+	//			vectMove.y = Random.Range(-1f, 1f);
+
+	//		}
+
+	//	}
+	//}
 }
